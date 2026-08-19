@@ -35,6 +35,22 @@ Setiap aktivitas rantai pasok dicatat sebagai **traceability log** yang saling t
 
 ---
 
+## Cuplikan Layar
+
+| Landing Page | Login |
+|---|---|
+| ![Landing Page](docs/screenshots/landing.png) | ![Login](docs/screenshots/login.png) |
+
+| Dashboard Admin (Analitik) | Detail Produk & Traceability Timeline |
+|---|---|
+| ![Dashboard Admin](docs/screenshots/admin-dashboard.png) | ![Detail Produk](docs/screenshots/product-detail.png) |
+
+| Sertifikat Digital & QR Code | Verifikasi Publik |
+|---|---|
+| ![Sertifikat Digital & QR Code](docs/screenshots/certificate-qr.png) | ![Verifikasi Publik](docs/screenshots/verify-public.png) |
+
+---
+
 ## Fitur Utama
 
 - **Landing page** riset — penjelasan masalah, konsep blockchain/smart contract, alur sistem, info penelitian
