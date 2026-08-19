@@ -1,0 +1,45 @@
+# ==============================================
+# Padang LocalTrace System (PLTS) - .gitignore
+# ==============================================
+
+# --- Uploaded user content ---
+# Foto produk hasil upload user tidak perlu di-commit,
+# tapi foto seed/demo dataset tetap dipertahankan.
+uploads/products/*
+!uploads/products/seed_*.jpg
+!uploads/products/.htaccess
+!uploads/products/.gitkeep
+
+# --- OS files ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Editor / IDE ---
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+
+# --- Logs & temporary files ---
+*.log
+*.tmp
+*.bak
+error_log
+
+# --- Local environment overrides (jika ditambahkan di kemudian hari) ---
+.env
+.env.local
+config/database.local.php
+
+# --- Dependency managers (jika suatu saat digunakan) ---
+vendor/
+node_modules/
+composer.lock
+package-lock.json
+
+# --- Backup file database lokal ---
+*.sql.bak
+*.sql.gz
