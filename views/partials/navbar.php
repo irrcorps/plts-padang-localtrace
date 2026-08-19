@@ -4,8 +4,8 @@
         <a class="navbar-brand d-flex align-items-center gap-2" href="<?= BASE_URL ?>/index.php">
             <span class="brand-mark"><i class="bi bi-link-45deg"></i></span>
             <span class="brand-text">
-                <span class="brand-title">PLTS</span>
-                <span class="brand-sub">Padang LocalTrace System</span>
+                <span class="brand-title">LokalTrust</span>
+                <span class="brand-sub">Blockchain Traceability Platform</span>
             </span>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">

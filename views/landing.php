@@ -13,7 +13,7 @@
                         <span class="text-gradient">Berbasis Blockchain</span>
                     </h1>
                     <p class="hero-lead mb-4">
-                        Padang LocalTrace System (PLTS) adalah prototipe platform yang mencatat
+                        LokalTrust adalah prototipe platform yang mencatat
                         perjalanan produk ritel lokal secara transparan &mdash; dari produsen hingga
                         konsumen &mdash; serta menerbitkan sertifikat digital melalui simulasi
                         <em>smart contract</em>, untuk memperkuat hilirisasi UMKM Kota Padang.
@@ -56,7 +56,7 @@
                             <i class="bi bi-box-seam"></i>
                             <div>
                                 <div class="chain-card-title">Producer</div>
-                                <div class="chain-card-sub">Rendang Kemasan &bull; Block #001</div>
+                                <div class="chain-card-sub">Rendang Minang Premium &bull; Block #001</div>
                             </div>
                         </div>
                         <div class="chain-card chain-card-2">
@@ -155,7 +155,7 @@
                 <span class="section-eyebrow">Konsep Solusi</span>
                 <h2 class="section-title">Blockchain-Inspired Traceability &amp; Smart Contract</h2>
                 <p class="text-muted-plts mx-auto" style="max-width:700px">
-                    PLTS mengadopsi prinsip inti blockchain &mdash; pencatatan berantai yang tidak
+                    LokalTrust mengadopsi prinsip inti blockchain &mdash; pencatatan berantai yang tidak
                     mudah diubah (hash-linked ledger) &mdash; dan logika <em>smart contract</em> sederhana
                     untuk otomatisasi penerbitan sertifikat, sebagai model konseptual dalam skala prototipe penelitian.
                 </p>

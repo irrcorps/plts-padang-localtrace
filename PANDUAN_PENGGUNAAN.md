@@ -1,5 +1,5 @@
 # Panduan Penggunaan Sistem
-## Padang LocalTrace System (PLTS)
+## LokalTrust
 
 Dokumen ini menjelaskan cara menggunakan seluruh fitur sistem untuk masing-masing peran pengguna (role).
 
@@ -40,10 +40,13 @@ Draft → Submitted → Verified → Certified
 
 | Role | Email | Password |
 |---|---|---|
-| Admin | admin@plts.test | password123 |
-| Producer / UMKM | producer@plts.test | password123 |
-| Distributor | distributor@plts.test | password123 |
-| Retailer | retailer@plts.test | password123 |
+| Admin | admin@lokaltrust.com | password123 |
+| Producer / UMKM (Rendang Minang Premium) | producer@lokaltrust.com | password123 |
+| Producer / UMKM (Keripik Balado Padang) | producer2@lokaltrust.com | password123 |
+| Producer / UMKM (Kopi Lokal Minang) | producer3@lokaltrust.com | password123 |
+| Distributor | distributor@lokaltrust.com | password123 |
+| Retailer (Toko Oleh-Oleh Minang Asli) | retailer@lokaltrust.com | password123 |
+| Retailer (Minang Mart Modern) | retailer2@lokaltrust.com | password123 |
 
 Atau daftar akun baru sendiri lewat halaman **Register** (pilih role: Producer, Distributor, atau Retailer — role Admin tidak bisa didaftar sendiri demi keamanan).
 
@@ -60,7 +63,7 @@ Buka halaman utama untuk membaca:
 
 ### b. Verifikasi Produk (`Verify Product`)
 1. Klik menu **Verify Product** di navbar (tidak perlu login).
-2. Masukkan **nomor sertifikat** (contoh: `CERT-PLTS-2026-0001`) atau **kode produk** (contoh: `PROD-001`) — bisa diketik manual atau hasil scan QR code pada kemasan.
+2. Masukkan **nomor sertifikat** (contoh: `CERT-LOKALTRUST-2026-0001`) atau **kode produk** (contoh: `PROD-001`) — bisa diketik manual atau hasil scan QR code pada kemasan.
 3. Sistem menampilkan:
    - Informasi produk & producer
    - Status sertifikat (Aktif/Dicabut)
@@ -154,7 +157,7 @@ Menampilkan:
    ```
 2. Klik **Terbitkan Sertifikat Digital**.
 3. Sistem otomatis:
-   - Membuat nomor sertifikat unik (`CERT-PLTS-{tahun}-{urutan}`)
+   - Membuat nomor sertifikat unik (`CERT-LOKALTRUST-{tahun}-{urutan}`)
    - Menghitung *certificate hash* (transaction hash)
    - Menambahkan block baru ke Blockchain Ledger Simulation
    - Mengubah status produk menjadi **Certified**

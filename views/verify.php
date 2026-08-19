@@ -27,7 +27,7 @@ $activityClass = [
         <div class="row justify-content-center mb-4">
             <div class="col-lg-7">
                 <form method="GET" action="<?= BASE_URL ?>/verify.php" class="d-flex gap-2">
-                    <input type="text" name="code" class="form-control form-control-plts" placeholder="cth. CERT-PLTS-2026-0001 atau PROD-001"
+                    <input type="text" name="code" class="form-control form-control-plts" placeholder="cth. CERT-LOKALTRUST-2026-0001 atau PROD-001"
                            value="<?= e($code) ?>" required>
                     <button type="submit" class="btn btn-plts-primary px-4">
                         <i class="bi bi-search me-1"></i>Cek
@@ -52,7 +52,7 @@ $activityClass = [
                         <i class="bi bi-qr-code fs-1 text-muted-plts mb-2 d-block"></i>
                         <p class="text-muted-plts small mb-0">
                             Pindai QR code pada kemasan produk, atau masukkan kode secara manual.
-                            Contoh kode demo: <code>CERT-PLTS-2026-0001</code>
+                            Contoh kode demo: <code>CERT-LOKALTRUST-2026-0001</code>
                         </p>
                     </div>
                 </div>

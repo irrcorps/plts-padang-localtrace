@@ -29,7 +29,7 @@ $ledgerBlocks = $blockModel->latest(20);
         <div class="dashboard-welcome mb-4">
             <span class="badge-pill mb-2"><i class="bi bi-shield-lock me-1"></i>Administrator</span>
             <h3 class="fw-bold mb-1">Halo, <?= e(Auth::user()['name']) ?> 👋</h3>
-            <p class="text-muted-plts mb-0">Ringkasan sistem &amp; dashboard analitik Padang LocalTrace System (PLTS).</p>
+            <p class="text-muted-plts mb-0">Ringkasan sistem &amp; dashboard analitik LokalTrust.</p>
         </div>
 
         <div class="row g-3 mb-4">

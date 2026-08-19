@@ -8,8 +8,8 @@
                 <div class="auth-card">
                     <div class="text-center mb-4">
                         <span class="brand-mark brand-mark-lg mx-auto mb-3"><i class="bi bi-link-45deg"></i></span>
-                        <h3 class="fw-bold mb-1">Masuk ke PLTS</h3>
-                        <p class="text-muted-plts small mb-0">Padang LocalTrace System</p>
+                        <h3 class="fw-bold mb-1">Masuk ke LokalTrust</h3>
+                        <p class="text-muted-plts small mb-0">Blockchain Traceability Platform</p>
                     </div>
 
                     <?php if ($msg = getFlash('error')): ?>
@@ -39,7 +39,7 @@
 
                     <div class="demo-account-box mt-4">
                         <div class="small fw-semibold mb-2"><i class="bi bi-info-circle me-1"></i>Akun Demo (password: <code>password123</code>)</div>
-                        <div class="small text-muted-plts">admin@plts.test &middot; producer@plts.test &middot; distributor@plts.test &middot; retailer@plts.test</div>
+                        <div class="small text-muted-plts">admin@lokaltrust.com &middot; producer@lokaltrust.com &middot; distributor@lokaltrust.com &middot; retailer@lokaltrust.com</div>
                     </div>
                 </div>
             </div>

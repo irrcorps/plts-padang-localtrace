@@ -85,7 +85,7 @@ class AuthController
 
         $user = $this->userModel->findById($userId);
         Auth::login($user);
-        flash('success', 'Registrasi berhasil. Selamat datang di PLTS!');
+        flash('success', 'Registrasi berhasil. Selamat datang di LokalTrust!');
         redirect('dashboard.php');
     }
 

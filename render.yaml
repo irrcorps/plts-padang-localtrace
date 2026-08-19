@@ -1,0 +1,28 @@
+# Render Blueprint untuk LokalTrust.
+# Cara pakai: di dashboard Render → New → Blueprint → pilih repo GitHub ini.
+# Render akan membaca file ini otomatis dan meminta Anda mengisi env var
+# database (DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PASSWORD) dari provider
+# MySQL online pilihan Anda (mis. Clever Cloud) sebelum deploy.
+services:
+  - type: web
+    name: lokaltrust
+    runtime: docker
+    plan: free
+    region: singapore
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /index.php
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: BASE_URL
+        value: ""
+      - key: DB_HOST
+        sync: false
+      - key: DB_PORT
+        value: "3306"
+      - key: DB_NAME
+        value: lokaltrust_db
+      - key: DB_USER
+        sync: false
+      - key: DB_PASSWORD
+        sync: false

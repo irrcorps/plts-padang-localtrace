@@ -4,10 +4,10 @@
                 <div class="col-lg-4">
                     <div class="d-flex align-items-center gap-2 mb-3">
                         <span class="brand-mark"><i class="bi bi-link-45deg"></i></span>
-                        <span class="fw-bold text-white fs-5">PLTS</span>
+                        <span class="fw-bold text-white fs-5">LokalTrust</span>
                     </div>
                     <p class="text-secondary-light small mb-0">
-                        Padang LocalTrace System — Prototipe penelitian PDP 2026 untuk sistem
+                        LokalTrust — Prototipe penelitian PDP 2026 untuk sistem
                         traceability dan sertifikasi digital produk ritel lokal berbasis konsep
                         blockchain dan smart contract, guna mendukung hilirisasi produk UMKM Kota Padang.
                     </p>
@@ -38,7 +38,7 @@
             </div>
             <hr class="border-secondary my-4">
             <p class="text-secondary-light small mb-0 text-center">
-                &copy; <?= date('Y') ?> Padang LocalTrace System. Prototipe akademik &mdash; bukan produk komersial.
+                &copy; <?= date('Y') ?> LokalTrust. Prototipe akademik &mdash; bukan produk komersial.
             </p>
         </div>
     </footer>

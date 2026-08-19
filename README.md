@@ -1,4 +1,4 @@
-# Padang LocalTrace System (PLTS)
+# LokalTrust
 
 **Blockchain-Based Traceability and Digital Certification Platform for Local Retail Products**
 
@@ -6,32 +6,7 @@ Prototipe penelitian **PDP 2026** — *"Perancangan Sistem Traceability dan Sert
 
 Sistem ini adalah **prototipe pembuktian konsep (Proof of Concept) pada Tingkat Kesiapterapan Teknologi (TKT) 3** — bukan ERP atau marketplace produksi penuh — yang mendemonstrasikan model *traceability* berbasis konsep blockchain (hash-linked ledger) dan sertifikasi digital berbasis simulasi *smart contract* untuk produk ritel lokal Kota Padang.
 
----
-
-## Tech Stack
-
-| Layer | Teknologi |
-|---|---|
-| Backend | PHP Native 8.x (struktur MVC sederhana, tanpa framework) |
-| Database | MySQL / MariaDB via PDO (prepared statements) |
-| Frontend | Bootstrap 5, Bootstrap Icons, HTML/CSS/JavaScript |
-| Chart | Chart.js (CDN) |
-| QR Code | qrcode.js (CDN, client-side render) |
-| Font | Plus Jakarta Sans & JetBrains Mono (Google Fonts) |
-
-Tidak ada dependency Composer/Node.js/build tool — cukup PHP + MySQL, langsung jalan di localhost maupun shared hosting.
-
----
-
-## Alur Sistem
-
-```
-PRODUCER  →  DISTRIBUTOR  →  RETAILER  →  CONSUMER (Publik)
-   │              │               │               │
-Production   Distribution   Retail Receiving  Consumer Verification
-```
-
-Setiap aktivitas rantai pasok dicatat sebagai **traceability log** yang saling terhubung lewat hash (*hash-linked ledger*), dan direplikasi ke **Blockchain Ledger Simulation** global. Produk yang lengkap dan lolos verifikasi admin diterbitkan **sertifikat digital + QR Code** melalui simulasi *smart contract* (`IF produk_lengkap AND dokumen_valid AND diverifikasi_admin THEN generate_certificate()`).
+**Demo online:** https://lokaltrust.onrender.com *(lihat [DEPLOYMENT.md](DEPLOYMENT.md) untuk status & cara deploy ulang)*
 
 ---
 
@@ -51,6 +26,34 @@ Setiap aktivitas rantai pasok dicatat sebagai **traceability log** yang saling t
 
 ---
 
+## Teknologi
+
+| Layer | Teknologi |
+|---|---|
+| Backend | PHP Native 8.x (struktur MVC sederhana, tanpa framework) |
+| Database | MySQL / MariaDB via PDO (prepared statements) |
+| Frontend | Bootstrap 5, Bootstrap Icons, HTML/CSS/JavaScript |
+| Chart | Chart.js (CDN) |
+| QR Code | qrcode.js (CDN, client-side render) |
+| Font | Plus Jakarta Sans & JetBrains Mono (Google Fonts) |
+| Deployment | Docker (php:8.2-apache) di Render.com + MySQL online (Clever Cloud) |
+
+Tidak ada dependency Composer/Node.js/build tool untuk aplikasinya sendiri — cukup PHP + MySQL. Docker hanya dipakai sebagai pembungkus deployment karena Render tidak punya runtime PHP native.
+
+---
+
+## Alur Sistem
+
+```
+PRODUCER  →  DISTRIBUTOR  →  RETAILER  →  CONSUMER (Publik)
+   │              │               │               │
+Production   Distribution   Retail Receiving  Consumer Verification
+```
+
+Setiap aktivitas rantai pasok dicatat sebagai **traceability log** yang saling terhubung lewat hash (*hash-linked ledger*), dan direplikasi ke **Blockchain Ledger Simulation** global. Produk yang lengkap dan lolos verifikasi admin diterbitkan **sertifikat digital + QR Code** melalui simulasi *smart contract* (`IF produk_lengkap AND dokumen_valid AND diverifikasi_admin THEN generate_certificate()`).
+
+---
+
 ## Fitur Utama
 
 - **Landing page** riset — penjelasan masalah, konsep blockchain/smart contract, alur sistem, info penelitian
@@ -58,13 +61,14 @@ Setiap aktivitas rantai pasok dicatat sebagai **traceability log** yang saling t
 - **Manajemen produk (CRUD)** dengan upload foto (validasi MIME asli) dan status *Draft → Submitted → Verified → Certified/Rejected*
 - **Traceability module** — pencatatan aktivitas rantai pasok dengan hash chaining per produk, ditampilkan sebagai timeline
 - **Sertifikasi digital** — simulasi smart contract, checklist kelayakan otomatis, nomor sertifikat unik, QR Code
-- **Verifikasi publik** (`/verify.php`) tanpa login — scan QR / input kode, lihat riwayat rantai pasok & status sertifikat, auto-catat aktivitas *Consumer Verification*
+- **Verifikasi publik** (`/verify/{certificate_id}`) tanpa login — scan QR / input kode, lihat riwayat rantai pasok & status sertifikat, auto-catat aktivitas *Consumer Verification*
 - **Dashboard analitik admin** — kartu statistik, grafik sertifikasi & aktivitas traceability, tabel Blockchain Ledger Simulation
 
 ---
 
-## Quick Start
+## Cara Instalasi
 
+### Localhost (development)
 ```bash
 # 1. Import database
 mysql -u root < database.sql
@@ -72,37 +76,59 @@ mysql -u root < database.sql
 # 2. Jalankan (built-in server, tanpa Apache)
 php -S localhost:8000
 ```
+Buka `http://localhost:8000/index.php`. Untuk instalasi via XAMPP/hosting shared, lihat **[INSTALASI.md](INSTALASI.md)**.
 
-Buka `http://localhost:8000/index.php`. Untuk instalasi via XAMPP/hosting, lihat **[INSTALASI.md](INSTALASI.md)**.
+### Deploy online (Render + MySQL gratis)
+Lihat **[DEPLOYMENT.md](DEPLOYMENT.md)** — panduan lengkap Docker, environment variable, dan langkah deploy ke Render.com.
 
 ### Akun Demo (password: `password123`)
 
 | Role | Email |
 |---|---|
-| Admin | admin@plts.test |
-| Producer / UMKM | producer@plts.test |
-| Distributor | distributor@plts.test |
-| Retailer | retailer@plts.test |
+| Admin | admin@lokaltrust.com |
+| Producer / UMKM | producer@lokaltrust.com |
+| Distributor | distributor@lokaltrust.com |
+| Retailer | retailer@lokaltrust.com |
+
+> Data demo juga menyertakan 2 producer tambahan (`producer2@lokaltrust.com`, `producer3@lokaltrust.com`) dan 1 retailer tambahan (`retailer2@lokaltrust.com`) — lihat [PANDUAN_PENGGUNAAN.md](PANDUAN_PENGGUNAAN.md).
+
+---
+
+## Struktur Database
+
+Database: **`lokaltrust_db`** (MySQL/MariaDB, lihat [database.sql](database.sql))
+
+| Tabel | Isi |
+|---|---|
+| `users` | Akun lintas role (admin, producer, distributor, retailer) |
+| `products` | Data produk + status sertifikasi |
+| `traceability_logs` | Log aktivitas rantai pasok (hash-linked per produk) |
+| `certificates` | Sertifikat digital yang diterbitkan |
+| `blockchain_blocks` | Ledger simulasi global (hash-linked antar seluruh event sistem) |
+| `transactions` *(VIEW)* | Alias baca-saja ke `blockchain_blocks`, dengan kolom `transaction_id`/`transaction_hash` — disediakan agar tabel bernama literal "transactions" tersedia untuk dokumentasi/reviewer tanpa mengubah struktur/kode aplikasi yang sudah memakai `blockchain_blocks` |
+
+Primary key `AUTO_INCREMENT` di setiap tabel, foreign key `ON DELETE CASCADE`/`SET NULL` sesuai relasi (produk → producer, log/sertifikat/block → produk). Data contoh (3 producer, 1 distributor, 2 retailer, 3 produk, traceability log, sertifikat) sudah termasuk di `database.sql`.
 
 ---
 
 ## Struktur Proyek
 
 ```
-PLB-Padang/
-├── config/database.php        # kredensial koneksi database (PDO)
+LokalTrust/
+├── config/database.php        # koneksi database (baca dari environment variable)
 ├── core/                      # Database, Auth, helpers, bootstrap (autoload)
 ├── models/                    # User, Product, TraceabilityLog, Certificate, BlockchainBlock
 ├── controllers/                # Auth, Product, Traceability, Certification, Verify
 ├── views/                      # landing, auth, dashboard, products, verify (+ partials)
 ├── assets/                     # css, js
 ├── uploads/products/           # foto produk
-├── database.sql                # skema lengkap + data contoh
+├── database.sql                # skema lengkap + data contoh (lokaltrust_db)
+├── Dockerfile, docker-entrypoint.sh, render.yaml   # deployment (lihat DEPLOYMENT.md)
 └── index.php, login.php, register.php, dashboard.php,
     products.php, traceability.php, certification.php, verify.php
 ```
 
-MVC sederhana: setiap file di root berperan sebagai *entry point* yang memanggil Controller, Controller memanggil Model (PDO), lalu me-*render* View. Folder `config/`, `core/`, `models/`, `controllers/`, `views/` diproteksi `.htaccess` dari akses langsung browser.
+MVC sederhana: setiap file di root berperan sebagai *entry point* yang memanggil Controller, Controller memanggil Model (PDO), lalu me-*render* View. Folder `config/`, `core/`, `models/`, `controllers/`, `views/` diproteksi `.htaccess` dari akses langsung browser. Clean URL (`/login`, `/verify/{code}`) disediakan lewat `mod_rewrite` di `.htaccess` root, tanpa mengubah struktur routing PHP yang sudah ada.
 
 ---
 
@@ -110,7 +136,8 @@ MVC sederhana: setiap file di root berperan sebagai *entry point* yang memanggil
 
 | Dokumen | Isi |
 |---|---|
-| **[INSTALASI.md](INSTALASI.md)** | Persyaratan sistem, instalasi localhost & hosting, konfigurasi, troubleshooting |
+| **[INSTALASI.md](INSTALASI.md)** | Persyaratan sistem, instalasi localhost & hosting shared, konfigurasi, troubleshooting |
+| **[DEPLOYMENT.md](DEPLOYMENT.md)** | Deploy ke Render.com (Docker) + database online (Clever Cloud), environment variable, langkah demi langkah |
 | **[PANDUAN_PENGGUNAAN.md](PANDUAN_PENGGUNAAN.md)** | Panduan pemakaian lengkap per role (Producer, Distributor, Retailer, Admin, Publik), FAQ |
 
 ---
@@ -124,6 +151,7 @@ MVC sederhana: setiap file di root berperan sebagai *entry point* yang memanggil
 | 3 | Traceability Module | ✅ |
 | 4 | Certification + QR Verification | ✅ |
 | 5 | Dashboard Analytics | ✅ |
+| 6 | Deployment online (Render + MySQL online) | ✅ konfigurasi siap — lihat [DEPLOYMENT.md](DEPLOYMENT.md) untuk status live |
 
 ---
 

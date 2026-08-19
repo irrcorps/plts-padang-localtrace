@@ -1,4 +1,4 @@
-<FilesMatch "\.(sql|md|env)$">
+<FilesMatch "\.(sql|md|env|sh)$">
     <IfModule mod_authz_core.c>
         Require all denied
     </IfModule>
@@ -6,3 +6,18 @@
         Deny from all
     </IfModule>
 </FilesMatch>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # /verify/{certificate_id} -> verify.php?code={certificate_id}
+    RewriteRule ^verify/([^/]+)/?$ verify.php?code=$1 [L,QSA]
+
+    # Clean URL untuk entry point lain, mis. /login -> login.php,
+    # /dashboard -> dashboard.php, dst. Tidak berlaku untuk file/folder nyata
+    # (assets, uploads, dsb) sehingga aman berdampingan dengan URL asli *.php
+    # yang masih dipakai oleh seluruh link internal aplikasi.
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^([a-zA-Z_-]+)/?$ $1.php [L,QSA]
+</IfModule>

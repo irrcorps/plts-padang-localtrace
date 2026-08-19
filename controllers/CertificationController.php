@@ -99,7 +99,7 @@ class CertificationController
         $certificateId = $this->certificateModel->create([
             'product_id'         => $id,
             'certificate_number' => $certificateNumber,
-            'issuer'             => 'PLTS Certification Authority',
+            'issuer'             => 'LokalTrust Certification Authority',
             'issued_date'        => $issuedDate,
             'certificate_hash'   => $certificateHash,
             'status'             => 'active',
@@ -109,7 +109,7 @@ class CertificationController
 
         $this->blockModel->append(
             $id,
-            'PLTS Certification Authority',
+            'LokalTrust Certification Authority',
             'certificate',
             $certificateId,
             $certificateHash

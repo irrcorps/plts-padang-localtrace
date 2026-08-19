@@ -40,7 +40,7 @@ class Certificate
         $stmt->execute([
             'product_id'         => $data['product_id'],
             'certificate_number' => $data['certificate_number'],
-            'issuer'             => $data['issuer'] ?? 'PLTS Certification Authority',
+            'issuer'             => $data['issuer'] ?? 'LokalTrust Certification Authority',
             'issued_date'        => $data['issued_date'],
             'certificate_hash'   => $data['certificate_hash'],
             'status'             => $data['status'] ?? 'active',
@@ -63,11 +63,11 @@ class Certificate
     {
         $year = date('Y');
         $stmt = $this->db->prepare('SELECT COUNT(*) FROM certificates WHERE certificate_number LIKE ?');
-        $stmt->execute(['CERT-PLTS-' . $year . '-%']);
+        $stmt->execute(['CERT-LOKALTRUST-' . $year . '-%']);
         $sequence = (int) $stmt->fetchColumn() + 1;
 
         do {
-            $number = 'CERT-PLTS-' . $year . '-' . str_pad((string) $sequence, 4, '0', STR_PAD_LEFT);
+            $number = 'CERT-LOKALTRUST-' . $year . '-' . str_pad((string) $sequence, 4, '0', STR_PAD_LEFT);
             $checkStmt = $this->db->prepare('SELECT COUNT(*) FROM certificates WHERE certificate_number = ?');
             $checkStmt->execute([$number]);
             $exists = (int) $checkStmt->fetchColumn() > 0;

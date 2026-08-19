@@ -1,0 +1,4 @@
+# Pastikan shell script selalu pakai LF (bukan CRLF Windows) agar tidak
+# gagal dijalankan di dalam container Linux (Docker/Render).
+*.sh text eol=lf
+Dockerfile text eol=lf
