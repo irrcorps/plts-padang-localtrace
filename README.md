@@ -114,3 +114,9 @@ MVC sederhana: setiap file di root berperan sebagai *entry point* yang memanggil
 ## Catatan Akademik
 
 Proyek ini merupakan luaran **Penelitian Dosen Pemula (PDP) 2026**, disusun sebagai prototipe TKT 3 untuk membuktikan konsep *blockchain-inspired traceability* dan *digital certification* pada produk ritel lokal Kota Padang. Bukan produk komersial — untuk penggunaan produksi diperlukan pengembangan lanjutan (CSRF protection, rate limiting, audit keamanan, dan lain-lain).
+
+---
+
+## Lisensi
+
+Proyek ini dilisensikan di bawah **[MIT License](LICENSE)** — bebas digunakan, dimodifikasi, dan didistribusikan ulang dengan mencantumkan atribusi.
